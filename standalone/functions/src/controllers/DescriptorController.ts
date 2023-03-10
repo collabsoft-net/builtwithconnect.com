@@ -5,7 +5,7 @@ import { Confluence } from '../descriptors/confluence';
 //import { Jira } from '../descriptors/jira';
 
 @controller('/descriptors')
-export class DescriptorController extends AbstractController<ForgeSession> {
+export class DescriptorController extends AbstractController<ConnectSession> {
 
   @httpGet('/confluence/atlassian-connect.json')
   async getConfluenceDescriptor(): Promise<unknown> {

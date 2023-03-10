@@ -2,17 +2,17 @@ version: 2.1
 jobs:
 
   # cloud - production
-  forge-report-app-functions:
+  connect-report-app-functions:
     executor: functions
     steps:
       - functions:
-          project: forge-report-app
+          project: connect-report-app
 
-  forge-report-app-hosting:
+  connect-report-app-hosting:
     executor: hosting
     steps:
       - hosting:
-          project: forge-report-app
+          project: connect-report-app
 
 executors:
       
@@ -20,20 +20,20 @@ executors:
     docker:
       - image: cimg/node:16.14.2-browsers
     resource_class: large
-    working_directory: ~/forge/standalone/functions
+    working_directory: ~/connect/standalone/functions
 
   hosting:
     docker:
       - image: cimg/node:16.14.2-browsers
     resource_class: large
-    working_directory: ~/forge/standalone
+    working_directory: ~/connect/standalone
 
 commands:
 
   prepare:
     steps:
       - checkout:
-          path: ~/forge
+          path: ~/connect
 
       - run:
           name: Setup environment
@@ -44,18 +44,18 @@ commands:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-packages-{{ checksum "~/forge/yarn.lock" }}
+            - yarn-packages-{{ checksum "~/connect/yarn.lock" }}
       - run: 
           name: Install dependencies
           command: |
-            (cd ~/forge && yarn install --immutable)
+            (cd ~/connect && yarn install --immutable)
 
       - save_cache:
           name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "~/forge/yarn.lock" }}
+          key: yarn-packages-{{ checksum "~/connect/yarn.lock" }}
           paths:
-            - ~/forge/.yarn/cache
-            - ~/forge/.yarn/unplugged
+            - ~/connect/.yarn/cache
+            - ~/connect/.yarn/unplugged
 
   functions:
     parameters:
@@ -87,15 +87,15 @@ workflows:
   deploy:
     jobs:
       # Cloud - Production
-      - forge-report-app-functions:
+      - connect-report-app-functions:
           filters:
             branches:
               only: main
-          context: forge.report
-      - forge-report-app-hosting:
+          context: connect.report
+      - connect-report-app-hosting:
           requires:
-            - forge-report-app-functions
+            - connect-report-app-functions
           filters:
             branches:
               only: main
-          context: forge.report
+          context: connect.report

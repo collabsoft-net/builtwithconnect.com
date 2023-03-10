@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@forge-report/frontend",
+  "name": "@connect-report/frontend",
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {

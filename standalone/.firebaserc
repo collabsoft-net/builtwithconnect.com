@@ -1,9 +1,9 @@
 {
   "targets": {
-    "forge-report-app": {
+    "connect-report-app": {
       "hosting": {
-        "forge-report-app": [
-          "forge-report-app"
+        "connect-report-app": [
+          "connect-report-app"
         ]
       }
     }

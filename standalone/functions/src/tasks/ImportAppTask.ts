@@ -64,9 +64,9 @@ export class ImportAppTask implements PubSubHandler {
       log(`==> Persisting source data for app ${app.id} to Firebase`);
       await rawService.save(app);
 
-      if (app.type === 'forge') {
+      if (app.type === 'connect') {
         const entity = this.toAppEntity(app);
-        log(`==> Persisting Forge app ${app.id} to Firebase`);
+        log(`==> Persisting Connect app ${app.id} to Firebase`);
         await appService.save(entity);
       }
 

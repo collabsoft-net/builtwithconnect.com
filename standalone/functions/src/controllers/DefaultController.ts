@@ -3,7 +3,7 @@ import { controller, httpGet } from 'inversify-express-utils';
 import { StatusCodeResult } from 'inversify-express-utils/lib/results';
 
 @controller('/api')
-export class DefaultController extends AbstractController<ForgeSession> {
+export class DefaultController extends AbstractController<ConnectSession> {
 
   @httpGet('/')
   async getDefaultEndpoint(): Promise<StatusCodeResult> {

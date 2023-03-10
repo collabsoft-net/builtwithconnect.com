@@ -1,12 +1,12 @@
 {
   "private": true,
-  "name": "forge-report",
+  "name": "connect-report",
   "version": "0.0.0",
   "scripts": {
     "start": "yarn run concurrently --handle-input --prefix-colors green,cyan,blue,red,magenta -n STANDALONE 'npm run start-standalone'",
     "start-standalone": "(cd standalone/ && npm start)",
-    "lint": "yarn workspaces foreach --exclude forge-report run lint",
-    "clean": "yarn workspaces foreach --exclude forge-report run clean && rm -rf node_modules",
+    "lint": "yarn workspaces foreach --exclude connect-report run lint",
+    "clean": "yarn workspaces foreach --exclude connect-report run clean && rm -rf node_modules",
     "reinstall": "yarn clean && yarn install",
     "upgrade-iapetus": "yarn up -E \"@collabsoft-net/*\""
   },

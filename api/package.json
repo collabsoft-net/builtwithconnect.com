@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@forge-report/api",
+  "name": "@connect-report/api",
   "version": "0.0.0",
   "scripts": {
     "clean": "rm -rf dist && rm -rf node_modules",

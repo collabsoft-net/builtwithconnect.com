@@ -24,11 +24,11 @@ const container = new Container();
 // ------------------------------------------------------------------------------------------ Bindings :: API
 
 container.bind<Repository>(Injectables.Repository).toConstantValue(
-  new FirebaseAdminRepository(process.env.FB_PROJECTID || 'forge-report-app', getFirebaseAdminOptions())
+  new FirebaseAdminRepository(process.env.FB_PROJECTID || 'connect-report-app', getFirebaseAdminOptions())
 );
 
 container.bind<EventEmitter>(Injectables.EventEmitter).toConstantValue(new PubSubEmitter({
-  projectId: process.env.FB_PROJECTID || 'forge-report-app',
+  projectId: process.env.FB_PROJECTID || 'connect-report-app',
   apiKey: process.env.FB_ADMINKEY
 }));
 

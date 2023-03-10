@@ -153,7 +153,7 @@ const hostOptions = [
   { label: 'Confluence', value: 'Confluence' },
 ];
 
-export const ForgeApps = () => {
+export const ConnectApps = () => {
 
   const [ service ] = useState(kernel.get<RestClientService>(Injectables.RestClientService));
   const [ apps, setApps ] = useState<Array<AppDTO>>([]);
@@ -232,8 +232,8 @@ export const ForgeApps = () => {
             { isLoading 
               ? <Spinner /> 
               : displayedApps.length !== apps.length 
-                ? <>Showing {displayedApps.length} out of {apps.length} Forge apps</> 
-                : <>{apps.length} Forge apps listed</>
+                ? <>Showing {displayedApps.length} out of {apps.length} Connect apps</> 
+                : <>{apps.length} Connect apps listed</>
             }
           </Column>
         </Grid>
@@ -242,7 +242,7 @@ export const ForgeApps = () => {
         <DynamicTable
           head={ createHead() }
           rows={ createRows(displayedApps) }
-          emptyView={ <span>There are no Forge apps available</span> }
+          emptyView={ <span>There are no Connect apps available</span> }
           isLoading={ isLoading }
           rowsPerPage={50}
           defaultPage={1}

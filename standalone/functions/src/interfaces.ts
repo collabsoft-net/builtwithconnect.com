@@ -2,12 +2,12 @@
 
 declare global {
 
-  interface ForgeSession extends Session {
+  interface ConnectSession extends Session {
   }
 
   /* eslint-disable-next-line @typescript-eslint/no-namespace */
   namespace Express {
-    interface User extends ForgeSession { }
+    interface User extends ConnectSession { }
   }
 }
 

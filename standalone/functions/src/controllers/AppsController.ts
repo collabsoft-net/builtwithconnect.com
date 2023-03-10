@@ -9,7 +9,7 @@ import { inject } from 'inversify';
 import { controller, httpDelete, httpGet, httpPost, requestParam } from 'inversify-express-utils';
 
 @controller('/api/apps')
-export class AppsController extends AbstractServiceController<App, AppDTO, ForgeSession> {
+export class AppsController extends AbstractServiceController<App, AppDTO, ConnectSession> {
 
   service: DefaultService<App, AppDTO>;
 

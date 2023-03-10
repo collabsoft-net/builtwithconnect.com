@@ -1,12 +1,12 @@
 import { Grid, Page, Row } from '@collabsoft-net/components';
 import React from 'react';
-import { ForgeApps } from "../../components/Molecules/ForgeApps";
+import { ConnectApps } from '../../components/Molecules/ConnectApps';
 
 export const Table = () => (
   <Page padding='40px 0'>
     <Grid fluid padding="0 20px">
       <Row>
-        <ForgeApps />
+        <ConnectApps />
       </Row>
     </Grid>
   </Page>

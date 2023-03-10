@@ -1,7 +1,7 @@
 
 import { Grid, Header, Page, Paragraph, Row } from '@collabsoft-net/components';
 import React from 'react';
-import { ForgeApps } from '../../components/Molecules/ForgeApps';
+import { ConnectApps } from '../../components/Molecules/ConnectApps';
 import Icon from '../../assets/icon.svg';
 import Avatar from '@atlaskit/avatar';
 
@@ -16,11 +16,11 @@ export const Overview = () => (
                 <Avatar src={ Icon } />
               </Row>
               <Row>
-                <Header weight='h900'>State of Forge</Header>
+                <Header weight='h900'>State of Connect</Header>
               </Row>
               <Row margin="16px 0 0">
                 <Paragraph>
-                  Your daily updated overview of Forge apps as listed on the Atlassian Marketplace
+                  Your daily updated overview of Connect apps as listed on the Atlassian Marketplace
                 </Paragraph>
               </Row>
             </Grid>
@@ -28,7 +28,7 @@ export const Overview = () => (
         </Grid>
       </Row>
       <Row margin='16px 0'>
-        <ForgeApps />
+        <ConnectApps />
       </Row>
     </Grid>
   </Page>

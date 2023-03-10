@@ -78,7 +78,7 @@ export class ImportAppTask implements PubSubHandler {
   }
 
   private toAppEntity(app: any): App {
-    const result = app.listing?.cloudAppVersions?.edges.find((item: any) => item?.node?.deployment?.__typename === 'MarketplaceCloudAppDeployment');
+    const result = app.listing?.cloudAppVersions?.edges.find((item: any) => item?.node?.deployment?.__typename === 'MarketplaceConnectAppDeployment');
     const cloudAppVersion = result.node;
 
     return {

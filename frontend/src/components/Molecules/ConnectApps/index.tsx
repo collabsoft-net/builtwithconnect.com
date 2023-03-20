@@ -164,6 +164,7 @@ export const ConnectApps = () => {
   const [ totalApps, setTotalApps ] = useState<number>();
   const [ totalAppsFetched, setTotalAppsFetched ] = useState<number>(0);
   const [ isLoading, setLoading ] = useState<boolean>(true);
+  const [ isFetching, setFetching ] = useState<boolean>(true);
 
   const [ filter, setFilter ] = useState<string>('');
   const [ host, setHost ] = useState<string>('');
@@ -175,6 +176,7 @@ export const ConnectApps = () => {
   }, [ service ])
 
   useEffect(() => {
+    setLoading(apps.length <= 0);
     if (totalApps && totalApps > 0) {
       if (apps.length !== totalApps) {
         const lastItem = apps[apps.length - 1];
@@ -183,7 +185,7 @@ export const ConnectApps = () => {
         setTotalAppsFetched(apps.length / totalApps);
         service.findAll<AppDTO>(AppDTO, { limit: 50, offset }).then(({ values }) => setApps([ ...apps, ...values ]));
       } else {
-        setLoading(false);
+        setFetching(false);
       }
     }
   }, [ apps, totalApps ]);
@@ -246,8 +248,8 @@ export const ConnectApps = () => {
             </Field>
           </Column>
           <Column stretched></Column>
-          <Column align='end' minWidth={ isLoading ? '200px' : undefined }>
-            { isLoading 
+          <Column align='end' minWidth={ isFetching ? '200px' : undefined }>
+            { isFetching
               ? <Tooltip content={ `${apps.length} of ${totalApps} Connect apps retrieved` }>
                   <ProgressBar ariaLabel={ `${apps.length} of ${totalApps} Connect apps retrieved` } value={ totalAppsFetched } />
                 </Tooltip>
@@ -262,6 +264,7 @@ export const ConnectApps = () => {
         <DynamicTable
           head={ createHead() }
           rows={ createRows(displayedApps) }
+          isLoading={ isLoading }
           emptyView={ <span>There are no Connect apps available</span> }
           rowsPerPage={50}
           defaultPage={1} />

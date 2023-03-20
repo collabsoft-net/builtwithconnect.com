@@ -1,5 +1,5 @@
 import { AbstractServiceController } from '@collabsoft-net/controllers';
-import { DefaultService, Repository } from '@collabsoft-net/types';
+import { DefaultService, QueryBuilder, Repository } from '@collabsoft-net/types';
 import { AppDTO } from 'API/dto/AppDTO';
 import { App } from 'API/entities/App';
 import Injectables from 'API/Injectables';
@@ -45,6 +45,22 @@ export class AppsController extends AbstractServiceController<App, AppDTO, Conne
   async deleteRequest() {
     // Tasks are automatically deleted by a scheduled task
     return this.statusCode(StatusCodes.NOT_IMPLEMENTED)
+  }
+
+  protected toQuery(key: string, value: string | number | boolean, query: QueryBuilder): QueryBuilder {
+    if (key === 'limit') {
+      query = query.limit(Number(value)).orderBy('id', 'asc');
+      const offset = this.httpContext.request.query['offset'];
+      if (offset && typeof offset === 'string') {
+        query.where('id', '>', offset);
+      }
+      return query;
+    }
+    return this.defaultQuery(key, value, query);
+  }
+
+  protected getDirection(direction: string): 'asc'|'desc' {
+    return (direction && direction.toLowerCase() === 'desc') ? 'desc' : 'asc';
   }
 
 }

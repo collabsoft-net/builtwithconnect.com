@@ -13,9 +13,10 @@ import SearchIcon from '@atlaskit/icon/glyph/search';
 import { camelCase } from '@collabsoft-net/helpers';
 import Textfield from '@atlaskit/textfield';
 import { colors } from '@atlaskit/theme';
-import Spinner from '@atlaskit/spinner';
 import Select from '@atlaskit/select';
 import { Field } from '@atlaskit/form';
+import ProgressBar from '@atlaskit/progress-bar';
+import Tooltip from '@atlaskit/tooltip';
 
 const createHead = () => {
   const head: HeadType = {
@@ -29,49 +30,49 @@ const createHead = () => {
   });
 
   head.cells.push({
-    key: 'NAME',
+    key: 'name',
     content: `Name`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'PARTNER',
+    key: 'partner.name',
     content: `Partner`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'HOSTING',
+    key: 'hosting',
     content: `Hosting`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'HOST',
+    key: 'host',
     content: `Host`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'PAID',
+    key: 'isPaid',
     content: `Paid via Atlassian`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'SCOPES',
+    key: 'scopes.length',
     content: `# of Scopes`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'INSTALLS',
+    key: 'distribution.totalInstalls',
     content: `# of Installs`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'USERS',
+    key: 'distribution.totalUsers',
     content: `# of Users`,
     isSortable: true
   });
@@ -156,18 +157,36 @@ const hostOptions = [
 export const ConnectApps = () => {
 
   const [ service ] = useState(kernel.get<RestClientService>(Injectables.RestClientService));
+
   const [ apps, setApps ] = useState<Array<AppDTO>>([]);
   const [ displayedApps, setDisplayedApps ] = useState<Array<AppDTO>>([]);
+
+  const [ totalApps, setTotalApps ] = useState<number>();
+  const [ totalAppsFetched, setTotalAppsFetched ] = useState<number>(0);
   const [ isLoading, setLoading ] = useState<boolean>(true);
 
-  const [ filter, setFilter ] = useState<string>();
+  const [ filter, setFilter ] = useState<string>('');
   const [ host, setHost ] = useState<string>('');
   const [ hosting, setHosting ] = useState<string>('');
   const [ payment, setPayment ] = useState<string>('');
 
   useEffect(() => {
-    service?.findAll<AppDTO>(AppDTO).then(({ values }) => setApps(values)).finally(() => setLoading(false));
+    service.count<AppDTO>(AppDTO).then(setTotalApps);
   }, [ service ])
+
+  useEffect(() => {
+    if (totalApps && totalApps > 0) {
+      if (apps.length !== totalApps) {
+        const lastItem = apps[apps.length - 1];
+        const offset = lastItem && lastItem.id ? lastItem.id : undefined;
+
+        setTotalAppsFetched(apps.length / totalApps);
+        service.findAll<AppDTO>(AppDTO, { limit: 50, offset }).then(({ values }) => setApps([ ...apps, ...values ]));
+      } else {
+        setLoading(false);
+      }
+    }
+  }, [ apps, totalApps ]);
 
   useEffect(() => {
     if (apps) {
@@ -207,33 +226,34 @@ export const ConnectApps = () => {
                   value={ filter }
                   placeholder='By name or partner'
                   onChange={ ({ currentTarget: { value }}) => setFilter(value) }
-                  elemAfterInput={ <div style={{ marginRight: '8px' }}><SearchIcon primaryColor={ colors.N300 } label='search' size='small' /></div> }
-                  isDisabled={ isLoading } />
+                  elemAfterInput={ <div style={{ marginRight: '8px' }}><SearchIcon primaryColor={ colors.N300 } label='search' size='small' /></div> } />
               }
             </Field>
           </Column>
           <Column width='150px' margin='0 8px 0 0'>
             <Field name='host' label='Host'>
-              {() => <Select options={ hostOptions } value={ hostOptions.find(item => item.value === host) } onChange={ (item) => item && setHost(item.value) } isDisabled={ isLoading } /> }
+              {() => <Select options={ hostOptions } value={ hostOptions.find(item => item.value === host) } onChange={ (item) => item && setHost(item.value) } /> }
             </Field>
           </Column>
           <Column width='150px' margin='0 8px 0 0'>
             <Field name='payment' label='Payment model'>
-              {() => <Select options={ paymentOptions } value={ paymentOptions.find(item => item.value === payment) } onChange={ (item) => item && setPayment(item.value) } isDisabled={ isLoading } /> }
+              {() => <Select options={ paymentOptions } value={ paymentOptions.find(item => item.value === payment) } onChange={ (item) => item && setPayment(item.value) } /> }
             </Field>
           </Column>
           <Column width='150px' margin='0 8px 0 0'>
             <Field name='hosting' label='Hosting'>
-              {() => <Select options={ hostingOptions } value={ hostingOptions.find(item => item.value === hosting) } onChange={ (item) => item && setHosting(item.value) } isDisabled={ isLoading } /> }
+              {() => <Select options={ hostingOptions } value={ hostingOptions.find(item => item.value === hosting) } onChange={ (item) => item && setHosting(item.value) } /> }
             </Field>
           </Column>
           <Column stretched></Column>
-          <Column padding='30px 0 0 0' height='40px' align='center'>
+          <Column align='end' minWidth={ isLoading ? '200px' : undefined }>
             { isLoading 
-              ? <Spinner /> 
-              : displayedApps.length !== apps.length 
-                ? <>Showing {displayedApps.length} out of {apps.length} Connect apps</> 
-                : <>{apps.length} Connect apps listed</>
+              ? <Tooltip content={ `${apps.length} of ${totalApps} Connect apps retrieved` }>
+                  <ProgressBar ariaLabel={ `${apps.length} of ${totalApps} Connect apps retrieved` } value={ totalAppsFetched } />
+                </Tooltip>
+              : displayedApps.length !== totalApps 
+                ? <>Showing {displayedApps.length} out of {totalApps} Connect apps</> 
+                : <>{totalApps} Connect apps listed</>
             }
           </Column>
         </Grid>
@@ -243,10 +263,8 @@ export const ConnectApps = () => {
           head={ createHead() }
           rows={ createRows(displayedApps) }
           emptyView={ <span>There are no Connect apps available</span> }
-          isLoading={ isLoading }
           rowsPerPage={50}
-          defaultPage={1}
-          />
+          defaultPage={1} />
       </Row>
     </Grid>
   );

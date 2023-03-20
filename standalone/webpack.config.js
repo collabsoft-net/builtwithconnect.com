@@ -47,7 +47,8 @@ const getBaseConfig = (type) => ({
   },
 
   externals: {
-    AP: 'AP'
+    AP: 'AP',
+    AJS: 'AJS'
   },
 
   node: {

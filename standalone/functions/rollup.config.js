@@ -17,7 +17,6 @@ export default {
   },
   external: [
     'firebase-functions',
-    'firebase-functions/lib/logger',
     'source-map-support/register',
     'reflect-metadata',
     'inversify-express-utils',

@@ -171,7 +171,7 @@ export const ConnectApps = () => {
   const [ payment, setPayment ] = useState<string>('');
 
   useEffect(() => {
-    service.count<AppDTO>(AppDTO).then(setTotalApps);
+    service.count<AppDTO>(AppDTO, { limit: 1 }).then(setTotalApps);
   }, [ service ])
 
   useEffect(() => {

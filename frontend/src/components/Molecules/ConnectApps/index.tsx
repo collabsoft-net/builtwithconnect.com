@@ -1,7 +1,7 @@
 
 import DynamicTable from '@atlaskit/dynamic-table';
-import { Column, Grid, Row } from '@collabsoft-net/components';
-import React, { useEffect, useState } from 'react';
+import { Column, Grid, IconWithLabel, Row, withProps } from '@collabsoft-net/components';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
 import kernel from 'API/kernel';
 import { RestClientService } from 'API/services/RestClientService';
 import Injectables from 'API/Injectables';
@@ -10,13 +10,23 @@ import { HeadType, RowType } from '@atlaskit/dynamic-table/dist/types/types';
 import Avatar from '@atlaskit/avatar';
 import CheckIcon from '@atlaskit/icon/glyph/check';
 import SearchIcon from '@atlaskit/icon/glyph/search';
-import { camelCase } from '@collabsoft-net/helpers';
-import Textfield from '@atlaskit/textfield';
+import { camelCase, isNullOrEmpty } from '@collabsoft-net/helpers';
+import TextField from '@atlaskit/textfield';
 import { colors } from '@atlaskit/theme';
 import Select from '@atlaskit/select';
 import { Field } from '@atlaskit/form';
-import ProgressBar from '@atlaskit/progress-bar';
-import Tooltip from '@atlaskit/tooltip';
+import Spinner from '@atlaskit/spinner';
+import Pagination from '@atlaskit/pagination';
+import ClearIcon from '@atlaskit/icon/glyph/cross';
+import { LoadingButton as Button } from '@atlaskit/button';
+import styled from 'styled-components';
+
+const PAGINATION_LIMIT = 50;
+
+const QueryColumn = withProps<{ focussed?: boolean }>()(styled(Column))`
+  width: ${props => props.focussed ? '214px' : '150px' };
+  transition: all 0.3s cubic-bezier(0.15, 1, 0.3, 1) 0s;
+`;
 
 const createHead = () => {
   const head: HeadType = {
@@ -36,7 +46,7 @@ const createHead = () => {
   });
 
   head.cells.push({
-    key: 'partner.name',
+    key: 'partner',
     content: `Partner`,
     isSortable: true
   });
@@ -54,25 +64,25 @@ const createHead = () => {
   });
 
   head.cells.push({
-    key: 'isPaid',
+    key: 'paid',
     content: `Paid via Atlassian`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'scopes.length',
+    key: 'scopes',
     content: `# of Scopes`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'distribution.totalInstalls',
+    key: 'installs',
     content: `# of Installs`,
     isSortable: true
   });
 
   head.cells.push({
-    key: 'distribution.totalUsers',
+    key: 'users',
     content: `# of Users`,
     isSortable: true
   });
@@ -98,8 +108,8 @@ const createRows = (apps: Array<AppDTO>) => {
     });
 
     row.cells.push({
-      key: app.partner.name,
-      content: <a href={`https://marketplace.atlassian.com/vendors/${app.partner.id}`} target="_blank">{app.partner.name}</a>
+      key: app.partnerName,
+      content: <a href={`https://marketplace.atlassian.com/vendors/${app.partnerId}`} target="_blank">{app.partnerName}</a>
     });
 
     row.cells.push({
@@ -123,13 +133,13 @@ const createRows = (apps: Array<AppDTO>) => {
     });
 
     row.cells.push({
-      key: app.distribution?.totalInstalls || 0,
-      content: app.distribution?.totalInstalls || 0
+      key: app.totalInstalls || 0,
+      content: app.totalInstalls || 0
     });
 
     row.cells.push({
-      key: app.distribution?.totalUsers || 0,
-      content: app.distribution?.totalUsers || 0
+      key: app.totalUsers || 0,
+      content: app.totalUsers || 0
     });
 
     return row;
@@ -138,20 +148,20 @@ const createRows = (apps: Array<AppDTO>) => {
 
 const hostingOptions = [
   { label: 'All', value: '' },
-  { label: 'Only Cloud', value: 'cloud' },
-  { label: 'Multiple platforms', value: 'p2' }
+  { label: 'Only Cloud', value: 'CLOUD' },
+  { label: 'Multiple platforms', value: 'SERVER' }
 ];
 
 const paymentOptions = [
   { label: 'All', value: '' },
-  { label: 'Paid', value: 'paid' },
-  { label: 'Free', value: 'free' },
+  { label: 'Paid', value: 'true' },
+  { label: 'Free', value: 'false' },
 ];
 
 const hostOptions = [
   { label: 'All', value: '' },
-  { label: 'Jira', value: 'Jira' },
-  { label: 'Confluence', value: 'Confluence' },
+  { label: 'Jira', value: 'jira' },
+  { label: 'Confluence', value: 'confluence' },
 ];
 
 export const ConnectApps = () => {
@@ -159,79 +169,117 @@ export const ConnectApps = () => {
   const [ service ] = useState(kernel.get<RestClientService>(Injectables.RestClientService));
 
   const [ apps, setApps ] = useState<Array<AppDTO>>([]);
-  const [ displayedApps, setDisplayedApps ] = useState<Array<AppDTO>>([]);
+  // const [ displayedApps, setDisplayedApps ] = useState<Array<AppDTO>>([]);
 
   const [ totalApps, setTotalApps ] = useState<number>();
-  const [ totalAppsFetched, setTotalAppsFetched ] = useState<number>(0);
+  const [ totalSearchResults, setTotalSearchResults ] = useState<number>();
+  const [ totalPages, setTotalPages ] = useState<Array<number>>([]);
+  const [ selectedPage, setSelectedPage ] = useState<number>();
+  const [ sortKey, setSortKey ] = useState<string>('name');
+  const [ sortOrder, setSortOrder ] = useState<'asc'|'desc'>('asc');
+
   const [ isLoading, setLoading ] = useState<boolean>(true);
   const [ isFetching, setFetching ] = useState<boolean>(true);
 
   const [ filter, setFilter ] = useState<string>('');
+  const [ focusOnFilter, setFocusOnFilter ] = useState<boolean>(false);
+  const [ waitForInputTimerId, setWaitForInputTimerId ] = useState<number>();
+
   const [ host, setHost ] = useState<string>('');
   const [ hosting, setHosting ] = useState<string>('');
   const [ payment, setPayment ] = useState<string>('');
 
   useEffect(() => {
-    service.count<AppDTO>(AppDTO, { limit: 1 }).then(setTotalApps);
-  }, [ service ])
+    fetch().then(() => setLoading(false));
+  }, [ service ]);
 
   useEffect(() => {
-    setLoading(apps.length <= 0);
-    if (totalApps && totalApps > 0) {
-      if (apps.length !== totalApps) {
-        const lastItem = apps[apps.length - 1];
-        const offset = lastItem && lastItem.id ? lastItem.id : undefined;
-
-        setTotalAppsFetched(apps.length / totalApps);
-        service.findAll<AppDTO>(AppDTO, { limit: 50, offset }).then(({ values }) => setApps([ ...apps, ...values ]));
-      } else {
-        setFetching(false);
-      }
+    if (totalSearchResults) {
+      const pageCount = Math.ceil(totalSearchResults / PAGINATION_LIMIT);
+      const pages = [...Array(pageCount)].map((_: unknown, index: number) => index + 1);
+      setTotalPages(pages);
+      setSelectedPage(pages[0]);
     }
-  }, [ apps, totalApps ]);
+  }, [ totalSearchResults ]);
 
   useEffect(() => {
-    if (apps) {
-      let result = apps.slice();
-
-      if (filter && filter.length > 0) {
-        result = result.filter(item => 
-          item.name.toLocaleLowerCase().includes(filter.toLowerCase()) ||
-          item.partner.name.toLocaleLowerCase().includes(filter.toLowerCase())
-        )
-      }
-
-      if (host && host.length > 0) {
-        result = result.filter(item => (item.host as Array<string>).includes(host.toLowerCase()));
-      }
-
-      if (hosting && hosting.length > 0) {
-        result = result.filter(item => hosting === 'cloud' ? item.hosting.length === 1 : item.hosting.length > 1);
-      }
-
-      if (payment && payment.length > 0) {
-        result = result.filter(item => payment === 'paid' ? item.isPaid : !item.isPaid)
-      }
-
-      setDisplayedApps(result);
+    if (!isNullOrEmpty(filter)) {
+      window.clearTimeout(waitForInputTimerId);
+      const newTimer = window.setTimeout(() => fetch(sortKey, sortOrder), 1000);
+      setWaitForInputTimerId(newTimer);
+    } else {
+      fetch(sortKey, sortOrder);
     }
-  }, [ apps, filter, host, hosting, payment ]);
+  }, [ filter ]);
+
+  useEffect(() => {
+    fetch(sortKey, sortOrder);
+  }, [ selectedPage, payment, host, hosting ]);
+
+  const fetch = async (orderBy: string = 'name', direction: 'asc'|'desc' = 'asc') => {
+    setFetching(true);
+
+    return service.search<AppDTO>({
+      body: {
+        query: filter,
+        page: {
+          size: PAGINATION_LIMIT, 
+          current: selectedPage
+        },
+        sort: [
+          { [orderBy]: direction },
+          ...(orderBy !== 'name') ? [{
+            'name': 'asc' as 'asc'
+          }] : []
+        ],
+        filters: {
+          all: [
+            ...!isNullOrEmpty(payment) ? [ { any: [{ 'paid': payment }] } ] : [],
+            ...!isNullOrEmpty(host) ? [ { any: [{ 'host': host }] } ] : [],
+            ...!isNullOrEmpty(hosting) ? 
+              hosting === 'CLOUD' 
+                ? [ { none: [{ 'hosting': 'SERVER' }, { 'hosting': 'DATA_CENTER' }] } ]
+                : [ { any: [{ 'hosting': 'CLOUD' }, { 'hosting': 'SERVER' }, { 'hosting': 'DATA_CENTER' }] } ]
+              : []
+          ]
+        }
+      }
+    }).then(({ values, total }) => {
+      setApps(values);
+      if (!totalApps) {
+        setTotalApps(total);
+      }
+      setTotalSearchResults(total);
+      setSortKey(orderBy);
+      setSortOrder(direction);
+    }).finally(() => setFetching(false));
+  }
+
+  const clearFilter = () => {
+    setFetching(true);
+    setFilter('');
+    setFocusOnFilter(false);
+  }
 
   return (
     <Grid fluid padding="16px 20px">
       <Row>
         <Grid fluid vertical>
-          <Column margin='0 8px 0 0'>
+          <QueryColumn width='150px' margin='0 8px 0 0' focussed={ focusOnFilter }>
             <Field name='search' label='Search'>
               {() => 
-                <Textfield 
-                  value={ filter }
-                  placeholder='By name or partner'
-                  onChange={ ({ currentTarget: { value }}) => setFilter(value) }
-                  elemAfterInput={ <div style={{ marginRight: '8px' }}><SearchIcon primaryColor={ colors.N300 } label='search' size='small' /></div> } />
+                  <TextField
+                    value={ filter }
+                    onFocus={ () => setFocusOnFilter(true) }
+                    onBlur={ () => isNullOrEmpty(filter) && setFocusOnFilter(false) }
+                    onChange={ ({ currentTarget: { value }}) => setFilter(value) }
+                    elemAfterInput={ isNullOrEmpty(filter)
+                      ? <IconWithLabel src={<SearchIcon label='search' size='small' primaryColor={ colors.N300 } secondaryColor={ colors.N0 } />} align='center' margin='0 4px 0 0'>&nbsp;</IconWithLabel>
+                      : <IconWithLabel src={ <Button spacing='none' appearance='subtle-link' onClick={ clearFilter } iconBefore={ <ClearIcon label='clear' size='small' primaryColor={ colors.N300 } secondaryColor={ colors.N0 } /> } /> } margin='0 4px 0 0'>&nbsp;</IconWithLabel>
+                    } />
               }
             </Field>
-          </Column>
+          </QueryColumn>
           <Column width='150px' margin='0 8px 0 0'>
             <Field name='host' label='Host'>
               {() => <Select options={ hostOptions } value={ hostOptions.find(item => item.value === host) } onChange={ (item) => item && setHost(item.value) } /> }
@@ -248,13 +296,11 @@ export const ConnectApps = () => {
             </Field>
           </Column>
           <Column stretched></Column>
-          <Column align='end' minWidth={ isFetching ? '200px' : undefined }>
-            { isFetching
-              ? <Tooltip content={ `${apps.length} of ${totalApps} Connect apps retrieved` }>
-                  <ProgressBar ariaLabel={ `${apps.length} of ${totalApps} Connect apps retrieved` } value={ totalAppsFetched } />
-                </Tooltip>
-              : displayedApps.length !== totalApps 
-                ? <>Showing {displayedApps.length} out of {totalApps} Connect apps</> 
+          <Column align='end'>
+          { isLoading
+              ? <Spinner />
+              : totalApps !== totalSearchResults
+                ? <>{totalSearchResults} of {totalApps} Connect apps listed</>
                 : <>{totalApps} Connect apps listed</>
             }
           </Column>
@@ -263,11 +309,22 @@ export const ConnectApps = () => {
       <Row margin="12px 0">
         <DynamicTable
           head={ createHead() }
-          rows={ createRows(displayedApps) }
-          isLoading={ isLoading }
+          rows={ createRows(apps) }
+          isLoading={ isLoading || isFetching }
+          sortKey={ sortKey }
+          sortOrder={ sortOrder.toUpperCase() as 'ASC'|'DESC' }
+          onSort={ ({ key, sortOrder}: { key: string, sortOrder: 'ASC'|'DESC' }) => {
+            fetch(key, sortOrder.toLowerCase() as 'asc'|'desc');
+          }}
           emptyView={ <span>There are no Connect apps available</span> }
-          rowsPerPage={50}
-          defaultPage={1} />
+          rowsPerPage={ undefined } />
+      </Row>
+      <Row align='center'>
+        <Pagination 
+          pages={ totalPages } 
+          selectedIndex={ selectedPage ? selectedPage - 1 : 0 } 
+          getPageLabel={ (item) => item.toString() } 
+          onChange={ (_event: SyntheticEvent<unknown, Event>, page: number) => setSelectedPage(page) } />
       </Row>
     </Grid>
   );

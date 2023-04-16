@@ -1,6 +1,7 @@
 
 export enum Tasks {
-  ImportAppTask = 'ImportAppTask'
+  ImportAppTask = 'ImportAppTask',
+  ImportAppsTask = 'ImportAppsTask'
 }
 
 export enum ScheduledTasks {

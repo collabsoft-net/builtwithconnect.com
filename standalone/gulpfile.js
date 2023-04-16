@@ -184,7 +184,8 @@ const firebase = async (done) => {
       socket: {
         domain: env.AC_BASEURL
       },
-      injectChanges: false
+      injectChanges: false,
+      codeSync: false
     }, async () => {
       let retryCount = 0;
       while (retryCount <= 5) {

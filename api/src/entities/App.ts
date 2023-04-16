@@ -15,13 +15,9 @@ export interface App extends Entity {
   isPaid: boolean;
   host: Array<'confluence'|'jira'>;
   scopes: Array<string>;
-  partner: {
-    name: string;
-    id: string;
-    slug: string;
-  };
-  distribution: {
-    totalInstalls: number;
-    totalUsers: number;
-  }
+  partnerName: string;
+  partnerId: string;
+  partnerSlug: string;
+  totalInstalls: number;
+  totalUsers: number;
 }

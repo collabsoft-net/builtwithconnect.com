@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { CustomEvent, PubSubHandler, Repository } from '@collabsoft-net/types';
+import { IndexedAppDTO } from 'API/dto/IndexedAppDTO';
 import { App } from 'API/entities/App';
 import { Tasks } from 'API/enums/Events';
 import { ImportAppEvent } from 'API/events/ImportAppEvent';
 import Injectables from 'API/Injectables';
 import { AppService } from 'API/services/AppService';
 import { RawAppService } from 'API/services/RawAppService';
+import { SearchClientService } from 'API/services/SearchClientService';
 import axios from 'axios';
 import { error, log } from 'firebase-functions/logger';
 import { pubsub } from 'firebase-functions/v1';
@@ -19,7 +21,8 @@ export class ImportAppTask implements PubSubHandler {
   topic = Tasks.ImportAppTask;
 
   constructor(
-    @inject(Injectables.Repository) private repository: Repository
+    @inject(Injectables.Repository) private repository: Repository,
+    @inject(Injectables.SearchIndexerService) private indexer: SearchClientService
   ) {}
 
   async process(message: pubsub.Message): Promise<void> {
@@ -66,8 +69,12 @@ export class ImportAppTask implements PubSubHandler {
 
       if (app.type === 'connect') {
         const entity = this.toAppEntity(app);
+
         log(`==> Persisting Connect app ${app.id} to Firebase`);
         await appService.save(entity);
+
+        log(`==> Persisting Connect app ${app.id} to ElasticSearch`);
+        await this.indexer.index(new IndexedAppDTO(entity));
       }
 
       log(`==> Finished processing app ${app.id}`);
@@ -96,15 +103,11 @@ export class ImportAppTask implements PubSubHandler {
       isPaid: cloudAppVersion.paymentModel === 'PAID_VIA_ATLASSIAN',
       host: cloudAppVersion.deployment.compatibleProducts?.map((item: any) => item.id) || [],
       scopes: cloudAppVersion.deployment.scopes?.map((item: any) => item.id) || [],
-      partner: {
-        name: app.listing.partner.name,
-        id: app.listing.partner.id,
-        slug: app.listing.partner.slug
-      },
-      distribution: {
-        totalInstalls: app._embedded.distribution.totalInstalls,
-        totalUsers: app._embedded.distribution.totalUsers,
-      }
+      partnerName: app.listing.partner.name,
+      partnerId: app.listing.partner.id,
+      partnerSlug: app.listing.partner.slug,
+      totalInstalls: app._embedded.distribution.totalInstalls,
+      totalUsers: app._embedded.distribution.totalUsers,
     };
   }
 

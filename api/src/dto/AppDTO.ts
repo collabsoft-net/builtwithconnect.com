@@ -17,15 +17,11 @@ export class AppDTO extends DTO implements Omit<App, 'id'> {
   isPaid: boolean;
   host: Array<'confluence'|'jira'>;
   scopes: Array<string>;
-  partner: {
-    name: string;
-    id: string;
-    slug: string;
-  };
-  distribution: {
-    totalInstalls: number;
-    totalUsers: number;
-  }
+  partnerId: string;
+  partnerSlug: string;
+  partnerName: string;
+  totalInstalls: number;
+  totalUsers: number;
 
   constructor(data: App|AppDTO) {
     super(data.id);
@@ -42,7 +38,10 @@ export class AppDTO extends DTO implements Omit<App, 'id'> {
     this.isPaid = data.isPaid;
     this.host = data.host;
     this.scopes = data.scopes;
-    this.partner = data.partner;
-    this.distribution = data.distribution;
+    this.partnerId = data.partnerId;
+    this.partnerName = data.partnerName;
+    this.partnerSlug = data.partnerSlug;
+    this.totalInstalls = data.totalInstalls;
+    this.totalUsers = data.totalUsers;
   }
 }

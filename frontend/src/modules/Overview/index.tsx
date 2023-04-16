@@ -1,9 +1,10 @@
 
-import { Grid, Header, Page, Paragraph, Row } from '@collabsoft-net/components';
+import { Grid, Header, Link, Page, Paragraph, Row } from '@collabsoft-net/components';
 import React from 'react';
 import { ConnectApps } from '../../components/Molecules/ConnectApps';
 import Icon from '../../assets/icon.svg';
 import Avatar from '@atlaskit/avatar';
+import { isProduction } from '@collabsoft-net/helpers';
 
 export const Overview = () => (
   <Page padding='40px 0'>
@@ -25,6 +26,11 @@ export const Overview = () => (
               </Row>
             </Grid>
           </Row>
+          { !isProduction() && (
+            <Row marginTop='16px' align='center'>
+              <Link href='/api/apps/reindex'>Reindex</Link>
+            </Row>
+          )}
         </Grid>
       </Row>
       <Row margin='16px 0'>

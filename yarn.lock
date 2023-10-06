@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 4
+  version: 6
   cacheKey: 8
 
 "@apidevtools/json-schema-ref-parser@npm:^9.0.3":
@@ -1469,9 +1469,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@collabsoft-net/clients@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/clients@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fclients%2F1.0.0-alpha.306%2Fa9dd3d79ebd729840e2cc832e1c1b6c35d14602d"
+"@collabsoft-net/clients@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/clients@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fclients%2F1.1.0%2F2bb9b754563fc2680360f30f856a22b1808fe3f5"
   peerDependencies:
     "@collabsoft-net/connect": 1.0.0-alpha.159
     "@collabsoft-net/entities": 1.0.0-alpha.159
@@ -1480,13 +1480,13 @@ __metadata:
     atlassian-jwt: 2.0.2
     axios: 0.24.0
     query-string: 7.0.1
-  checksum: de3d2b3fcbadb9bb4183ad90c35ba803450a5fff9c39978b1bcf76e968b6d417a9af5d05909303fe26aa63693111540e2c07ae5c8d0119caff2b410b3e9609a5
+  checksum: 8e4a33ac0da6af67bec6c0505388ce33fd93ebb182d26652b5b19129d933068cc01ec1c45978cc0ce19ff3a310a46b0d565773659084cba5a2d3a7b4d7bb0a24
   languageName: node
   linkType: hard
 
-"@collabsoft-net/components@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/components@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fcomponents%2F1.0.0-alpha.306%2Faa814011ada457c002a5ea7c0dbd309d5f06efb9"
+"@collabsoft-net/components@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/components@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fcomponents%2F1.1.0%2F53b73a648e3c62f7c0acc8634d6bf610e40948c5"
   peerDependencies:
     "@atlaskit/avatar": 20.0.0
     "@atlaskit/button": 16.1.2
@@ -1500,13 +1500,13 @@ __metadata:
     react: 16.14.0
     react-dom: 16.14.0
     styled-components: 3.2.6
-  checksum: 3159683045b01cafe5ae8a05c099f9974f229a15e87045eca9d0f9091d4fbd9423d750124cef5d183d26b7d9d919c3c74ca70fa27abab7c84da0f980b885e2bb
+  checksum: fbb552d701f699580131e2029d66784ee3483fe75933b72e344f84c17e96c1946dce5d33ef02304f68fa6499584cbfcb6ee4264971539598b3bd1bdcfbf7cc5b
   languageName: node
   linkType: hard
 
-"@collabsoft-net/connect@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/connect@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fconnect%2F1.0.0-alpha.306%2F702e44dc4c144259eec91d9bc2e73b1667f9f2eb"
+"@collabsoft-net/connect@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/connect@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fconnect%2F1.1.0%2Fbe9d2b679bf67e8d581ad1c13519a5f3b205d6b1"
   peerDependencies:
     "@atlaskit/modal-dialog": 12.0.1
     "@collabsoft-net/helpers": ^1.0.0-alpha.213
@@ -1516,13 +1516,13 @@ __metadata:
     react: 16.14.0
     react-dom: 16.14.0
     styled-components: 3.2.6
-  checksum: b86cb1887d20e734affd87a55575554b8c7bd7fb33a899ac29548f2776a53b2f51fc16742e32471222b06688620b1e06a1ec7fe39f8f3508a0c809789657d479
+  checksum: 66ba5a67d8a9105da55f3c129aae2c21135a6fff45c3c729135cd9049c78314185f60ea89aed581b45aa38ab3171183c3cb91b34a731f697ed5ebd26d5eb72dd
   languageName: node
   linkType: hard
 
-"@collabsoft-net/controllers@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/controllers@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fcontrollers%2F1.0.0-alpha.306%2Fc3ffd1ecb0597dde6348909f09d0ae645106995f"
+"@collabsoft-net/controllers@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/controllers@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fcontrollers%2F1.1.0%2Fe73e513bcf291ecbb0ad990049d45124e0551cba"
   peerDependencies:
     "@collabsoft-net/dto": 1.0.0-alpha.44
     "@collabsoft-net/functions": 1.0.0-alpha.45
@@ -1532,22 +1532,22 @@ __metadata:
     inversify: 6.0.1
     inversify-express-utils: 6.4.3
     passport: 0.4.1
-  checksum: 0d1c65d5b5d9a39d6a9cf07e486124fcb7035005b3c2a78d451b55a6f0a30bc460cacadc1689df007709dd4a45f5e8aee74e17c814d87b7aed20ca1e67c62264
+  checksum: 011a536d7cbf6c9f8a33cfb20e13d0a1ffb4a72c1e41a9a8d196b039f7f3f1aa062b91d1412c71a1c2c64ed4e966b57b91ed73b2a9b1ad2551c181e82fa1f005
   languageName: node
   linkType: hard
 
-"@collabsoft-net/dto@npm:1.0.0-alpha.311":
-  version: 1.0.0-alpha.311
-  resolution: "@collabsoft-net/dto@npm:1.0.0-alpha.311::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fdto%2F1.0.0-alpha.311%2Fe82a23a4980b0ba50bbf1f55ef864e42713fbbe3"
+"@collabsoft-net/dto@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/dto@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fdto%2F1.1.0%2F7f594058be9609f2eb50bd6bd5f7da26cad3a025"
   peerDependencies:
     "@collabsoft-net/entities": 1.0.0-alpha.159
-  checksum: eff1b6f5f67bc4128975a2a056f7ca9c36f329ade6bc7082734b5cbff9f5d35254a0851cb940f107f34f7028253347a13e5a08590b22188f537d73c8f0d4dff3
+  checksum: 15bba0f80f4d3d977aa9a0beb5de81fcfe73258a366130b73d4988a3ea45cb95754f2a3a915e0cf8520c6f7c583c20202df27f3af1ffefab0fd4b3308e7ff89b
   languageName: node
   linkType: hard
 
-"@collabsoft-net/emitters@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/emitters@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Femitters%2F1.0.0-alpha.306%2F0d9a6a07ac670bde55954cf962a9e1baa4b9432e"
+"@collabsoft-net/emitters@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/emitters@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Femitters%2F1.1.0%2F1682b82c50f478b7ecbd64828a59f917d0878195"
   dependencies:
     "@google-cloud/pubsub": 2.17.0
     firebase: 9.0.1
@@ -1559,20 +1559,20 @@ __metadata:
       optional: true
     firebase:
       optional: true
-  checksum: 2fef37123ad8e4fc0fd4eb70d64bc1a0a695186d4f1abf1849bcb26f7e578f19f932b1ff3873a16cae6cd81206725d537132eb3d469d1d3f5d3f4310f00d4820
+  checksum: 7e167a9b0fc0b5d07357fbcb2895907730c2f286961a5b49ea7b128a6eafb6305e7e445a4102091623d3efeadfa035c20ec411eb8601e571de59d25bd184aca2
   languageName: node
   linkType: hard
 
-"@collabsoft-net/enums@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/enums@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fenums%2F1.0.0-alpha.306%2Ff0bb8764adaf16188eb3845113116f5c4221c27c"
-  checksum: b3057305ef55c43467c81ec9c6b2d3d62fdf13280b3657164fce7e075d9ba6631b1309468d1875290ef5dc5b1e87bc883c66e555c62d6b6a6d86cd9c2a7a56c4
+"@collabsoft-net/enums@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/enums@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fenums%2F1.1.0%2Fa05d23ca7bffbcd8d11a0418e31409ba79fed0e4"
+  checksum: 60375d85e5f6987095990c669e95e5a96cd091bfc7261913e5be876486b5ab9bbd57e8655c474ef8a49eeefdc77d128bcdcba9a9e9bf0497979b435a5b96fb95
   languageName: node
   linkType: hard
 
-"@collabsoft-net/functions@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/functions@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Ffunctions%2F1.0.0-alpha.306%2Fb64d667f1396f4236ed13d8551fb9cd08ee8984f"
+"@collabsoft-net/functions@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/functions@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Ffunctions%2F1.1.0%2Fbd4d15fd8fe34cd6b90a51dc29f75382dff58d8f"
   peerDependencies:
     "@collabsoft-net/helpers": 1.0.0-alpha.159
     "@collabsoft-net/services": 1.0.0-alpha.159
@@ -1588,52 +1588,52 @@ __metadata:
     inversify: 6.0.1
     inversify-express-utils: 6.4.3
     passport: 0.4.1
-  checksum: b82d47df9779232eae10557b90ecd4eb8792acfafa46aca99f8c0681dff426eca7f067785edee941fae7d52ce1512a05f56ac8757775ed8d62860d4a164994dd
+  checksum: 6ddf03deb596e8841db448596ebd511caae4eb483469bd3db04891219f42085ba0c63f245166e9feda074c677eea08a234d45605c48648b3e9bacc34524c426c
   languageName: node
   linkType: hard
 
-"@collabsoft-net/greenlock-dns-route53@npm:1.0.0-alpha.303":
-  version: 1.0.0-alpha.303
-  resolution: "@collabsoft-net/greenlock-dns-route53@npm:1.0.0-alpha.303::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fgreenlock-dns-route53%2F1.0.0-alpha.303%2Fc3d2d4fb5a568dbf2b637a33cab9b83d9cc0f85d"
+"@collabsoft-net/greenlock-dns-route53@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/greenlock-dns-route53@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fgreenlock-dns-route53%2F1.1.0%2F8c96554a64dfcb3fcb29d74d5368ca6cd1e73144"
   peerDependencies:
     "@aws-sdk/client-route-53": 3.31.0
-  checksum: 51669391fb58d64cbae15ee9a67d3d7a05a4ca4dd8c4c60ce041fad1cee7ce0b7b350361fd5e6a982c6c44512feb46d9a27ae09e45d82cfe33462a602d1514c0
+  checksum: ec0307f3de520ab328ef9fb8234337dafacfd57e4948783c8fc3dac46cf6b220fa94c93873fe14a2bc8cbf5950c75e15a6226520ecd85e5e88f7f9cec165aa68
   languageName: node
   linkType: hard
 
-"@collabsoft-net/helpers@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/helpers@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fhelpers%2F1.0.0-alpha.306%2Ff488c148ef36b4f0ba667a0385eecacf2801e9ca"
-  checksum: f300355ddb9b0700db4a6d3fa6a05fbe86fb77b614f1ebce8f5bb1d6b652c66a81b9d4b29865c179e52d1ae2560249375ad963d066618ac2fff389d7aa15f48e
+"@collabsoft-net/helpers@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/helpers@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fhelpers%2F1.1.0%2Ff97f9712be218d726e878bda4ed2e5cc04114c60"
+  checksum: 12a4624ff183824e462b08b2d9d8652e29d7af18d85f3ff3385d5ae526d2834ee31b6a36330a9f520a19658d1d9156f6e74c03929716f9ecbb38bcab8f292133
   languageName: node
   linkType: hard
 
-"@collabsoft-net/inversify@npm:1.0.0-alpha.303":
-  version: 1.0.0-alpha.303
-  resolution: "@collabsoft-net/inversify@npm:1.0.0-alpha.303::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Finversify%2F1.0.0-alpha.303%2F437a9cbe25d7f815809867fb068998e02e24b15f"
+"@collabsoft-net/inversify@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/inversify@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Finversify%2F1.1.0%2Ff65a91f75afb85d5810440cc0c7bec156d56ce83"
   peerDependencies:
     inversify: 6.0.1
     inversify-inject-decorators: 3.1.0
-  checksum: d1a706d0dbc15bde6d5ed8e2aa9ea4af4df5f74c5548e5941d7ef60ec2a899709137c788aa901a039e8a54b5761dfcd4ee754d9bddaf55b40ed6f1b8346a85be
+  checksum: 599edffbb9cc053ebcee0c4c20518779785646aa971a8216648a51e965daa2c4463c44be6c41bc412f36339d0028fe536c3cd450bae3f14cc90c24f98e01b8fc
   languageName: node
   linkType: hard
 
-"@collabsoft-net/repositories@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/repositories@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Frepositories%2F1.0.0-alpha.306%2Fb8a98b7db7dbfb2bc8f96b021304186fffbe1248"
+"@collabsoft-net/repositories@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/repositories@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Frepositories%2F1.1.0%2Ff364bd53a403ca95b7b4400522193c6986e51f3e"
   peerDependencies:
     "@collabsoft-net/dto": ^1.0.0-alpha.165
     "@collabsoft-net/emitters": 1.0.0-alpha.44
     "@google-cloud/storage": 6.7.0
     firebase-admin: 11.2.1
     uniqid: 5.4.0
-  checksum: 39dda5db2204b5e14d31014929d77ddd0f3a2fd5ef57f43f54b9dd63c5c96ab7cb0e81df915e3729ec84315197ed77c67eda278366e7f3588e9551df00e1c64d
+  checksum: 0af01a5ae10cd31f29cc290529ce481878046849c70ca384b9f2a84b02dfe6c9628a492d79259ec95718984b09d9ee5977e3c7001a8f2badd341092727e76266
   languageName: node
   linkType: hard
 
-"@collabsoft-net/services@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/services@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fservices%2F1.0.0-alpha.306%2F361c53d95b004a704471d44e534d148760a271f0"
+"@collabsoft-net/services@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/services@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Fservices%2F1.1.0%2F8c0cf0c7adcbec3b6738b9986e7d2f289310181a"
   peerDependencies:
     "@collabsoft-net/clients": 1.0.0-alpha.11
     "@collabsoft-net/enums": 1.0.0-alpha.43
@@ -1642,14 +1642,14 @@ __metadata:
     http-status-codes: ^2.1.4
     inversify: 6.0.1
     path-to-regexp: 6.1.0
-  checksum: 54729e507683bd4a896ced5791e84306d6a329383fa5a73a4e9d3caefb850bc64b33f6d287e95392da64bbd9935d0a015c0517d6975833910735b501f3ac619f
+  checksum: 69a35faacc4a567c61ae782c02e1ca65c785f08ecc49a1bba1e9671f754bd6c1659ed0cd9ba96df7da3d13dd4d5b628bf62f4cfc39e4042c5188fe34325d7105
   languageName: node
   linkType: hard
 
-"@collabsoft-net/types@npm:1.0.0-alpha.306":
-  version: 1.0.0-alpha.306
-  resolution: "@collabsoft-net/types@npm:1.0.0-alpha.306::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Ftypes%2F1.0.0-alpha.306%2F2dee3e7700504c0e8b679aa47d6c32d764ed7cab"
-  checksum: 1125b28ef3226541d3fadc79c55ee05d4341312dd40cc19f0a322ddd4fbd5ca4af7b1e8c65a1e1698c3435db1b846ca96cb7008841bf5652960672394bccff70
+"@collabsoft-net/types@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@collabsoft-net/types@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40collabsoft-net%2Ftypes%2F1.1.0%2Fb1d048c74d04e9c2202b3b7e6896ab385d3b2411"
+  checksum: 363ab50f3b614ab8e9bb95a2a748ff03c3a7c883916be61503ff0ea310a0a502fbbc5601f77e338bd31aa13539306a3d378323b0d23b7d389667f54183757513
   languageName: node
   linkType: hard
 
@@ -1677,20 +1677,20 @@ __metadata:
     "@atlaskit/textfield": 5.1.12
     "@atlaskit/tooltip": 17.6.9
     "@aws-sdk/client-route-53": 3.128.0
-    "@collabsoft-net/clients": 1.0.0-alpha.306
-    "@collabsoft-net/components": 1.0.0-alpha.306
-    "@collabsoft-net/connect": 1.0.0-alpha.306
-    "@collabsoft-net/controllers": 1.0.0-alpha.306
-    "@collabsoft-net/dto": 1.0.0-alpha.311
-    "@collabsoft-net/emitters": 1.0.0-alpha.306
-    "@collabsoft-net/enums": 1.0.0-alpha.306
-    "@collabsoft-net/functions": 1.0.0-alpha.306
-    "@collabsoft-net/greenlock-dns-route53": 1.0.0-alpha.303
-    "@collabsoft-net/helpers": 1.0.0-alpha.306
-    "@collabsoft-net/inversify": 1.0.0-alpha.303
-    "@collabsoft-net/repositories": 1.0.0-alpha.306
-    "@collabsoft-net/services": 1.0.0-alpha.306
-    "@collabsoft-net/types": 1.0.0-alpha.306
+    "@collabsoft-net/clients": 1.1.0
+    "@collabsoft-net/components": 1.1.0
+    "@collabsoft-net/connect": 1.1.0
+    "@collabsoft-net/controllers": 1.1.0
+    "@collabsoft-net/dto": 1.1.0
+    "@collabsoft-net/emitters": 1.1.0
+    "@collabsoft-net/enums": 1.1.0
+    "@collabsoft-net/functions": 1.1.0
+    "@collabsoft-net/greenlock-dns-route53": 1.1.0
+    "@collabsoft-net/helpers": 1.1.0
+    "@collabsoft-net/inversify": 1.1.0
+    "@collabsoft-net/repositories": 1.1.0
+    "@collabsoft-net/services": 1.1.0
+    "@collabsoft-net/types": 1.1.0
     "@elastic/app-search-node": 8.3.2
     "@elastic/enterprise-search": 8.6.0
     "@gdn/envify-nconf": 1.3.0
@@ -1775,20 +1775,20 @@ __metadata:
     "@atlaskit/textfield": 5.1.12
     "@atlaskit/tooltip": 17.6.9
     "@aws-sdk/client-route-53": 3.128.0
-    "@collabsoft-net/clients": 1.0.0-alpha.306
-    "@collabsoft-net/components": 1.0.0-alpha.306
-    "@collabsoft-net/connect": 1.0.0-alpha.306
-    "@collabsoft-net/controllers": 1.0.0-alpha.306
-    "@collabsoft-net/dto": 1.0.0-alpha.311
-    "@collabsoft-net/emitters": 1.0.0-alpha.306
-    "@collabsoft-net/enums": 1.0.0-alpha.306
-    "@collabsoft-net/functions": 1.0.0-alpha.306
-    "@collabsoft-net/greenlock-dns-route53": 1.0.0-alpha.303
-    "@collabsoft-net/helpers": 1.0.0-alpha.306
-    "@collabsoft-net/inversify": 1.0.0-alpha.303
-    "@collabsoft-net/repositories": 1.0.0-alpha.306
-    "@collabsoft-net/services": 1.0.0-alpha.306
-    "@collabsoft-net/types": 1.0.0-alpha.306
+    "@collabsoft-net/clients": 1.1.0
+    "@collabsoft-net/components": 1.1.0
+    "@collabsoft-net/connect": 1.1.0
+    "@collabsoft-net/controllers": 1.1.0
+    "@collabsoft-net/dto": 1.1.0
+    "@collabsoft-net/emitters": 1.1.0
+    "@collabsoft-net/enums": 1.1.0
+    "@collabsoft-net/functions": 1.1.0
+    "@collabsoft-net/greenlock-dns-route53": 1.1.0
+    "@collabsoft-net/helpers": 1.1.0
+    "@collabsoft-net/inversify": 1.1.0
+    "@collabsoft-net/repositories": 1.1.0
+    "@collabsoft-net/services": 1.1.0
+    "@collabsoft-net/types": 1.1.0
     "@elastic/app-search-node": 8.3.2
     "@elastic/enterprise-search": 8.6.0
     "@gdn/envify-nconf": 1.3.0
@@ -1873,19 +1873,19 @@ __metadata:
     "@atlaskit/textfield": 5.1.12
     "@atlaskit/tooltip": 17.6.9
     "@aws-sdk/client-route-53": 3.128.0
-    "@collabsoft-net/clients": 1.0.0-alpha.306
-    "@collabsoft-net/connect": 1.0.0-alpha.306
-    "@collabsoft-net/controllers": 1.0.0-alpha.306
-    "@collabsoft-net/dto": 1.0.0-alpha.311
-    "@collabsoft-net/emitters": 1.0.0-alpha.306
-    "@collabsoft-net/enums": 1.0.0-alpha.306
-    "@collabsoft-net/functions": 1.0.0-alpha.306
-    "@collabsoft-net/greenlock-dns-route53": 1.0.0-alpha.303
-    "@collabsoft-net/helpers": 1.0.0-alpha.306
-    "@collabsoft-net/inversify": 1.0.0-alpha.303
-    "@collabsoft-net/repositories": 1.0.0-alpha.306
-    "@collabsoft-net/services": 1.0.0-alpha.306
-    "@collabsoft-net/types": 1.0.0-alpha.306
+    "@collabsoft-net/clients": 1.1.0
+    "@collabsoft-net/connect": 1.1.0
+    "@collabsoft-net/controllers": 1.1.0
+    "@collabsoft-net/dto": 1.1.0
+    "@collabsoft-net/emitters": 1.1.0
+    "@collabsoft-net/enums": 1.1.0
+    "@collabsoft-net/functions": 1.1.0
+    "@collabsoft-net/greenlock-dns-route53": 1.1.0
+    "@collabsoft-net/helpers": 1.1.0
+    "@collabsoft-net/inversify": 1.1.0
+    "@collabsoft-net/repositories": 1.1.0
+    "@collabsoft-net/services": 1.1.0
+    "@collabsoft-net/types": 1.1.0
     "@elastic/app-search-node": 8.3.2
     "@elastic/enterprise-search": 8.6.0
     "@gdn/envify-nconf": 1.3.0
@@ -1966,20 +1966,20 @@ __metadata:
     "@atlaskit/textfield": 5.1.12
     "@atlaskit/tooltip": 17.6.9
     "@aws-sdk/client-route-53": 3.128.0
-    "@collabsoft-net/clients": 1.0.0-alpha.306
-    "@collabsoft-net/components": 1.0.0-alpha.306
-    "@collabsoft-net/connect": 1.0.0-alpha.306
-    "@collabsoft-net/controllers": 1.0.0-alpha.306
-    "@collabsoft-net/dto": 1.0.0-alpha.311
-    "@collabsoft-net/emitters": 1.0.0-alpha.306
-    "@collabsoft-net/enums": 1.0.0-alpha.306
-    "@collabsoft-net/functions": 1.0.0-alpha.306
-    "@collabsoft-net/greenlock-dns-route53": 1.0.0-alpha.303
-    "@collabsoft-net/helpers": 1.0.0-alpha.306
-    "@collabsoft-net/inversify": 1.0.0-alpha.303
-    "@collabsoft-net/repositories": 1.0.0-alpha.306
-    "@collabsoft-net/services": 1.0.0-alpha.306
-    "@collabsoft-net/types": 1.0.0-alpha.306
+    "@collabsoft-net/clients": 1.1.0
+    "@collabsoft-net/components": 1.1.0
+    "@collabsoft-net/connect": 1.1.0
+    "@collabsoft-net/controllers": 1.1.0
+    "@collabsoft-net/dto": 1.1.0
+    "@collabsoft-net/emitters": 1.1.0
+    "@collabsoft-net/enums": 1.1.0
+    "@collabsoft-net/functions": 1.1.0
+    "@collabsoft-net/greenlock-dns-route53": 1.1.0
+    "@collabsoft-net/helpers": 1.1.0
+    "@collabsoft-net/inversify": 1.1.0
+    "@collabsoft-net/repositories": 1.1.0
+    "@collabsoft-net/services": 1.1.0
+    "@collabsoft-net/types": 1.1.0
     "@elastic/app-search-node": 8.3.2
     "@elastic/enterprise-search": 8.6.0
     "@gdn/envify-nconf": 1.3.0
@@ -5762,7 +5762,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:4.21.1, browserslist@npm:^4.14.5":
+"browserslist@npm:^4.14.5":
   version: 4.21.1
   resolution: "browserslist@npm:4.21.1"
   dependencies:
@@ -6620,20 +6620,20 @@ __metadata:
     "@atlaskit/textfield": 5.1.12
     "@atlaskit/tooltip": 17.6.9
     "@aws-sdk/client-route-53": 3.128.0
-    "@collabsoft-net/clients": 1.0.0-alpha.306
-    "@collabsoft-net/components": 1.0.0-alpha.306
-    "@collabsoft-net/connect": 1.0.0-alpha.306
-    "@collabsoft-net/controllers": 1.0.0-alpha.306
-    "@collabsoft-net/dto": 1.0.0-alpha.311
-    "@collabsoft-net/emitters": 1.0.0-alpha.306
-    "@collabsoft-net/enums": 1.0.0-alpha.306
-    "@collabsoft-net/functions": 1.0.0-alpha.306
-    "@collabsoft-net/greenlock-dns-route53": 1.0.0-alpha.303
-    "@collabsoft-net/helpers": 1.0.0-alpha.306
-    "@collabsoft-net/inversify": 1.0.0-alpha.303
-    "@collabsoft-net/repositories": 1.0.0-alpha.306
-    "@collabsoft-net/services": 1.0.0-alpha.306
-    "@collabsoft-net/types": 1.0.0-alpha.306
+    "@collabsoft-net/clients": 1.1.0
+    "@collabsoft-net/components": 1.1.0
+    "@collabsoft-net/connect": 1.1.0
+    "@collabsoft-net/controllers": 1.1.0
+    "@collabsoft-net/dto": 1.1.0
+    "@collabsoft-net/emitters": 1.1.0
+    "@collabsoft-net/enums": 1.1.0
+    "@collabsoft-net/functions": 1.1.0
+    "@collabsoft-net/greenlock-dns-route53": 1.1.0
+    "@collabsoft-net/helpers": 1.1.0
+    "@collabsoft-net/inversify": 1.1.0
+    "@collabsoft-net/repositories": 1.1.0
+    "@collabsoft-net/services": 1.1.0
+    "@collabsoft-net/types": 1.1.0
     "@elastic/app-search-node": 8.3.2
     "@elastic/enterprise-search": 8.6.0
     "@gdn/envify-nconf": 1.3.0
@@ -9228,25 +9228,26 @@ fsevents@^1.2.7:
     bindings: ^1.5.0
     nan: ^2.12.1
   checksum: ae855aa737aaa2f9167e9f70417cf6e45a5cd11918e1fee9923709a0149be52416d765433b4aeff56c789b1152e718cd1b13ddec6043b78cdda68260d86383c1
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
 "fsevents@patch:fsevents@^1.2.7#~builtin<compat/fsevents>":
   version: 1.2.13
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=1cc4b2"
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=d11327"
   dependencies:
     bindings: ^1.5.0
     nan: ^2.12.1
-  checksum: b264407498db2cfdcc2a05287334a4160c985a88e4a989e2f2f8dcc6afc8b04a4fcd82c797266442452e11c1fb07d7747d138b078fe4bb1f8f4fd2a6f2484d7e
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
 "fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=1cc4b2"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
     node-gyp: latest
-  checksum: 78db9daf1f6526a49cefee3917cc988f62dc7f25b5dd80ad6de4ffc4af7f0cab7491ac737626ff53e482a111bc53aac9e411fe3602458eca36f6a003ecf69c16
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
@@ -9256,6 +9257,7 @@ fsevents@~2.3.2:
   dependencies:
     node-gyp: latest
   checksum: 97ade64e75091afee5265e6956cb72ba34db7819b4c3e94c431d4be2b19b8bb7a2d4116da417950c3425f17c8fe693d25e20212cac583ac1521ad066b77ae31f
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
@@ -14963,27 +14965,27 @@ resolve@^2.0.0-next.3:
 
 "resolve@patch:resolve@^1.1.6#~builtin<compat/resolve>, resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.4.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.9.0#~builtin<compat/resolve>":
   version: 1.22.1
-  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=00b1ff"
+  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=c3c19d"
   dependencies:
     is-core-module: ^2.9.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: d45553550a85af4c6c310a4d9790b60f1fcbdbb1b7ca93f1ad8e06424d69aa6782d59bd93a4c085777baf6159ecc1dbe432299a6027c4837de4db5851a5d3435
+  checksum: 5656f4d0bedcf8eb52685c1abdf8fbe73a1603bb1160a24d716e27a57f6cecbe2432ff9c89c2bd57542c3a7b9d14b1882b73bfe2e9d7849c9a4c0b8b39f02b8b
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@^2.0.0-next.3#~builtin<compat/resolve>":
   version: 2.0.0-next.4
-  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.4#~builtin<compat/resolve>::version=2.0.0-next.4&hash=00b1ff"
+  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.4#~builtin<compat/resolve>::version=2.0.0-next.4&hash=c3c19d"
   dependencies:
     is-core-module: ^2.9.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: 6813d545fa80defd71142e2b472676bf9d71d7cddd6cacb4bd8a91e952c07cc435f31833862b819961ad1067143891dce29e64873cfa844a4c69e011ae4c1ec7
+  checksum: 4bf9f4f8a458607af90518ff73c67a4bc1a38b5a23fef2bb0ccbd45e8be89820a1639b637b0ba377eb2be9eedfb1739a84cde24fe4cd670c8207d8fea922b011
   languageName: node
   linkType: hard
 
@@ -16833,11 +16835,11 @@ resolve@^2.0.0-next.3:
 
 "typescript@patch:typescript@4.7.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.6.2#~builtin<compat/typescript>":
   version: 4.7.4
-  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=32657b"
+  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=65a307"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 0b078b97f27848c2d10fc0777b7cb4cb85374426620edac25b2fe62459a4344569655e7f1a989d0ce9d5618cdeb958451eb2ee9436e78f7af86a99e800df967b
+  checksum: 9096d8f6c16cb80ef3bf96fcbbd055bf1c4a43bd14f3b7be45a9fbe7ada46ec977f604d5feed3263b4f2aa7d4c7477ce5f9cd87de0d6feedec69a983f3a4f93e
   languageName: node
   linkType: hard
 

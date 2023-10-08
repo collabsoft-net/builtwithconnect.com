@@ -2,13 +2,13 @@ version: 2.1
 jobs:
 
   # cloud - production
-  connect-report-app-functions:
+  builtwithconnect-com-functions:
     executor: functions
     steps:
       - functions:
           project: connect-report-app
 
-  connect-report-app-hosting:
+  builtwithconnect-com-hosting:
     executor: hosting
     steps:
       - hosting:
@@ -18,13 +18,13 @@ executors:
       
   functions:
     docker:
-      - image: cimg/node:16.14.2-browsers
+      - image: cimg/node:18.16-browsers
     resource_class: large
     working_directory: ~/connect/standalone/functions
 
   hosting:
     docker:
-      - image: cimg/node:16.14.2-browsers
+      - image: cimg/node:18.16-browsers
     resource_class: large
     working_directory: ~/connect/standalone
 
@@ -64,7 +64,7 @@ commands:
     steps:
       - prepare
 
-      - deploy:
+      - run:
           name: Deploy firebase functions
           command: yarn run firebase deploy -f --only functions --project << parameters.project >>
 
@@ -75,7 +75,7 @@ commands:
     steps:
       - prepare
       
-      - deploy:
+      - run:
           name: Deploy firebase hosting & database
           command: |
             export NODE_ENV=production
@@ -83,19 +83,16 @@ commands:
             yarn run firebase deploy -f --only hosting --project << parameters.project >>
 
 workflows:
-  version: 2
   deploy:
     jobs:
       # Cloud - Production
-      - connect-report-app-functions:
+      - builtwithconnect-com-functions:
           filters:
             branches:
               only: main
-          context: connect.report
-      - connect-report-app-hosting:
+      - builtwithconnect-com-hosting:
           requires:
-            - connect-report-app-functions
+            - builtwithconnect-com-functions
           filters:
             branches:
               only: main
-          context: connect.report

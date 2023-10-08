@@ -16,7 +16,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.js",
   "engines": {
-    "node": "16"
+    "node": "18"
   },
   "license": "UNLICENSED",
   "devDependencies": {
